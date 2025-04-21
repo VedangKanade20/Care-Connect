@@ -40,9 +40,9 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.methods.generateAuthToken = function (){
-  const token = 
-}
+// userSchema.methods.generateAuthToken = function (){
+//   const token = 
+// }
 
 
 
