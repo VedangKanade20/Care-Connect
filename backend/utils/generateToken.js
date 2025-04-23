@@ -1,3 +1,7 @@
-export const generateVerificationCode = () =>{
-    Math.floor(100000 + Math.random() * 900000).toString()
-}
+import jwt from "jsonwebtoken";
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
+};
+
+export default generateToken;

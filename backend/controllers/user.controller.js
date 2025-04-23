@@ -1,4 +1,15 @@
-const loginUser = async (req, res) => {};
+import asyncHandler from "express-async-handler";
+import User from "../models/userModel.js";
+/**
+ * @desc    Login user
+ * @route   POST /api/users/login
+ * @acces   public
+ */
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+};
 
 const registerUser = async (req, res) => {};
 
@@ -15,4 +26,3 @@ export default {
   updateUserProfile,
   getUser,
 };
-
