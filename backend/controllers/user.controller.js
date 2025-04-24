@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
       .status(500)
       .json({ message: "Login Failed Completely", error: error.message });
   }
-};
+}; //checked
 
 const registerUser = async (req, res) => {
   const { name, email, password, role, staffType } = req.body;
@@ -68,13 +68,13 @@ const registerUser = async (req, res) => {
       .status(500)
       .json({ message: "Registration failed", error: error.message });
   }
-};
+}; //checked
 
 const logoutUser = async (req, res) => {
   // Note: Logout is typically handled client-side by clearing the token
   // Server-side, we can just return a success response
   res.json({ message: "Logged out successfully" });
-};
+}; //checked
 
 const updateUserProfile = async (req, res) => {};
 
