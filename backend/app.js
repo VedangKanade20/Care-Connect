@@ -1,5 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
+import userRouter from "./routes/user.routes.js";
 
 const app = express();
 
@@ -11,4 +12,5 @@ app.get("/", (_, res) => {
   res.send("hello , world");
 });
 
+app.use("/api/users", userRouter);
 export default app;
