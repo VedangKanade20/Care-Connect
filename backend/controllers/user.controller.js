@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/user.model.js";
 import generateToken from "../utils/generateToken.js";
+import bcrypt from "bcryptjs";
 /**
  * @desc    Login user
  * @route   POST /api/users/login
@@ -32,6 +33,11 @@ const loginUser = async (req, res) => {
   }
 }; //checked
 
+/**
+ * @desc    Register a new user
+ * @route   POST /api/users/register
+ * @access  public
+ */
 const registerUser = async (req, res) => {
   const { name, email, password, role, staffType } = req.body;
 
@@ -70,14 +76,79 @@ const registerUser = async (req, res) => {
   }
 }; //checked
 
+/**
+ * @desc    Logout user
+ * @route   POST /api/users/logout
+ * @access  public
+ */
 const logoutUser = async (req, res) => {
   // Note: Logout is typically handled client-side by clearing the token
   // Server-side, we can just return a success response
   res.json({ message: "Logged out successfully" });
 }; //checked
 
-const updateUserProfile = async (req, res) => {};
+/**
+ * @desc    Update user profile
+ * @route   PUT /api/users/profile
+ * @access  private
+ */
+const updateUserProfile = async (req, res) => {
+  const { name, email, password } = req.body;
+  const userId = req.user._id;
 
-const getUser = async (req, res) => {};
+  const user = await User.findById(userId);
 
-export { loginUser, registerUser, logoutUser, updateUserProfile, getUser };
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  user.name = name || user.name;
+  user.email = email || user.email;
+  if (password) {
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+  }
+
+  await user.save();
+
+  res.json({
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+    staffType: user.staffType,
+  });
+}; //checked
+
+const userProfile = async (req, res) => {
+  const userId = req.user._id;
+
+  const user = await User.findById(userId).select("-password");
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  res.json(user);
+};
+
+/*
+ * @desc    Get list of all users
+ * @route   GET /api/users
+ * @access  private (Admin only)
+ */
+const getListOfUsers = asyncHandler(async (req, res) => {
+  const users = await User.find().select("-password");
+  res.json(users);
+});
+
+export {
+  loginUser,
+  registerUser,
+  logoutUser,
+  updateUserProfile,
+  userProfile,
+  getListOfUsers,
+};

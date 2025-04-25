@@ -34,6 +34,15 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+userSchema.virtual("isAdmin").get(function () {
+  return this.role === "Admin";
+});
+
+
+userSchema.methods.isNGOStaffWithType = function (staffType) {
+  return this.role === "NGO_Staff" && this.staffType === staffType;
+};
+
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
