@@ -121,6 +121,11 @@ const updateUserProfile = async (req, res) => {
   });
 }; //checked
 
+/**
+ * @desc    Get user profile
+ * @route   GET /api/users/profile
+ * @access  private
+ */
 const userProfile = async (req, res) => {
   const userId = req.user._id;
 
@@ -132,7 +137,7 @@ const userProfile = async (req, res) => {
   }
 
   res.json(user);
-};
+}; //chedked
 
 /*
  * @desc    Get list of all users
@@ -142,7 +147,7 @@ const userProfile = async (req, res) => {
 const getListOfUsers = asyncHandler(async (req, res) => {
   const users = await User.find().select("-password");
   res.json(users);
-});
+}); //checked
 
 export {
   loginUser,
