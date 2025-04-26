@@ -28,4 +28,10 @@ const monetaryDonationSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("MonetaryDonation", monetaryDonationSchema);
+
+const MonetaryDonation = mongoose.model(
+  "MonetaryDonation",
+  monetaryDonationSchema
+);
+
+export default MonetaryDonation;

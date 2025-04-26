@@ -37,9 +37,9 @@ const surplusDonationSchema = new mongoose.Schema({
   },
 });
 
-const surplusDonation = mongoose.model(
+const SurplusDonation = mongoose.model(
   "surplusDonation",
   surplusDonationSchema
 );
 
-export default surplusDonation;
+export default SurplusDonation;
