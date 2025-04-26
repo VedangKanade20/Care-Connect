@@ -57,7 +57,22 @@ const restrictToDonor = (req, res, next) => {
   }
 };
 
-export { protect, restrictToAdmin, restrictToDonor, restrictToNGOStaff };
+const restrictToAdminAndNGOStaff = (req, res, next) => {
+  if (req.user && (req.user.isAdmin || req.user.role === "NGO_Staff")) {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized. Only for Admin and NGO Staff.");
+  }
+};
+
+export {
+  protect,
+  restrictToAdmin,
+  restrictToDonor,
+  restrictToNGOStaff,
+  restrictToAdminAndNGOStaff,
+};
 // This is for cookies-based Approach
 // const verifyJWt = (req, res, next) => {
 //   const token = req.cookies.token;

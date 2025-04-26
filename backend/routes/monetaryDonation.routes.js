@@ -11,21 +11,30 @@ import {
   restrictToAdminAndNGOStaff,
 } from "../middlewares/user.middleware.js";
 
-const router = express.Router();
+const monetaryDonationRouter = express.Router();
 
-router.post("/monetary", protect, restrictToDonor, createMonetaryDonation);
-router.get(
-  "/monetary",
+monetaryDonationRouter.post(
+  "/donate-money",
+  protect,
+  restrictToDonor,
+  createMonetaryDonation
+);
+monetaryDonationRouter.get(
+  "/get-donation",
   protect,
   restrictToAdminAndNGOStaff,
   getMonetaryDonation
 );
-router.get(
-  "/monetary/:id",
+monetaryDonationRouter.get(
+  "/get-donationById",
   protect,
   restrictToAdminAndNGOStaff,
   getMonetaryDonationById
 );
-router.get("/monetary/mine", protect, restrictToDonor, getMyMonetaryDonations);
-
-export default router;
+monetaryDonationRouter.get(
+  "/my-donation",
+  protect,
+  restrictToDonor,
+  getMyMonetaryDonations
+);
+export default monetaryDonationRouter;

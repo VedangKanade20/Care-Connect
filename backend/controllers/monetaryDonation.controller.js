@@ -1,4 +1,5 @@
-import MonetaryDonation from "../models/MonetaryDonation.model";
+import MonetaryDonation from "../models/MonetaryDonation.model.js";
+import asyncHandler from "express-async-handler";
 
 /**
  * @desc    Create a new monetary donation

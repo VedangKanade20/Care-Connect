@@ -1,4 +1,5 @@
-import SurplusDonation from "../models/SurplusDonation.model";
+import SurplusDonation from "../models/SurplusDonation.model.js";
+import asyncHandler from "express-async-handler";
 
 /**
  * @desc    Create a new surplus donation

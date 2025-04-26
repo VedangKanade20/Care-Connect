@@ -1,6 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user.routes.js";
+import surplusDonationRouter from "./routes/surplusDonation.routes.js";
+import monetaryDonationRouter from "./routes/monetaryDonation.routes.js";
 
 const app = express();
 
@@ -13,4 +15,8 @@ app.get("/", (_, res) => {
 });
 
 app.use("/api/users", userRouter);
+
+app.use("/api/donations/surplus", surplusDonationRouter);
+app.use("/api/donations/monetary", monetaryDonationRouter);
+
 export default app;

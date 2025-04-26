@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const monetaryDonationSchema = new mongoose.Schema({
   donorId: {
@@ -27,7 +27,6 @@ const monetaryDonationSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
 
 const MonetaryDonation = mongoose.model(
   "MonetaryDonation",
