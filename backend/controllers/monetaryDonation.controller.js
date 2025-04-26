@@ -24,7 +24,7 @@ const createMonetaryDonation = async (req, res) => {
 
   const createdDonation = await donation.save();
   res.status(201).json(createdDonation);
-};
+}; //checked
 
 /**
  * @desc    Get all monetary donations
@@ -37,7 +37,7 @@ const getMonetaryDonation = asyncHandler(async (req, res) => {
     "name email"
   );
   res.json(donations);
-});
+}); //checked
 
 /**
  * @desc    Get monetary donation by ID
@@ -56,7 +56,7 @@ const getMonetaryDonationById = asyncHandler(async (req, res) => {
   }
 
   res.json(donation);
-});
+}); //checked
 
 /**
  * @desc    Get donor's own monetary donations
@@ -68,7 +68,7 @@ const getMyMonetaryDonations = asyncHandler(async (req, res) => {
     donorId: req.user.id,
   }).populate("donorId", "name email");
   res.json(donations);
-});
+}); //checked
 
 export {
   createMonetaryDonation,

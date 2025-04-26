@@ -29,7 +29,7 @@ const createSurplusDonation = async (req, res) => {
 
   const createdDonation = await donation.save();
   res.status(201).json(createdDonation);
-};
+}; //checked
 
 /**
  * @desc    Get all surplus donations
@@ -42,7 +42,7 @@ const getSurplusDonation = asyncHandler(async (req, res) => {
     "name email"
   );
   res.json(donations);
-});
+}); //checked
 
 /**
  * @desc    Get surplus donation by ID
@@ -61,7 +61,7 @@ const getSurplusDonationById = asyncHandler(async (req, res) => {
   }
 
   res.json(donation);
-});
+}); //checked
 
 /**
  * @desc    Update surplus donation
@@ -81,7 +81,7 @@ const updateSurplusDonation = async (req, res) => {
 
   const updatedDonation = await donation.save();
   res.json(updatedDonation);
-};
+}; //checked
 
 /**
  * @desc    Delete surplus donation
@@ -103,7 +103,7 @@ const deleteSurplusDonation = async (req, res) => {
 
   await donation.remove();
   res.json({ message: "Donation removed" });
-};
+}; //checked
 
 /**
  * @desc    Get donor's own surplus donations
@@ -115,7 +115,7 @@ const getMySurplusDonations = asyncHandler(async (req, res) => {
     donorId: req.user.id,
   }).populate("donorId", "name email");
   res.json(donations);
-});
+}); //checked
 
 export {
   createSurplusDonation,
