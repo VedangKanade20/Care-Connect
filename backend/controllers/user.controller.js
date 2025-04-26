@@ -13,11 +13,6 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
-    const isPasswordCorrect = await user.isPasswordCorrect(password);
-    if (!isPasswordCorrect) {
-      return res.status(401).json({ message: "Invaliddd Credentials" });
-    }
-
     res.json({
       _id: user._id,
       name: user.name,

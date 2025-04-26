@@ -30,7 +30,7 @@ surplusDonationRouter.get(
   getSurplusDonation
 );
 surplusDonationRouter.get(
-  "/get-donationById",
+  "/get-donationById/:id",
   protect,
   restrictToAdminAndNGOStaff,
   getSurplusDonationById
@@ -42,9 +42,9 @@ surplusDonationRouter.get(
   getMySurplusDonations
 );
 surplusDonationRouter.put(
-  "/update-donation",
+  "/update-donation/:id",
   protect,
-  restrictToNGOStaff("core"),
+  restrictToDonor,
   updateSurplusDonation
 );
 surplusDonationRouter.delete(

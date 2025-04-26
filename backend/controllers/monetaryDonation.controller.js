@@ -7,7 +7,7 @@ import asyncHandler from "express-async-handler";
  * @access  private (Donor)
  */
 const createMonetaryDonation = async (req, res) => {
-  const { amount, currency } = req.body;
+  const { amount, currency, transactionId } = req.body;
   const donorId = req.user.id;
 
   if (!amount) {
@@ -19,7 +19,7 @@ const createMonetaryDonation = async (req, res) => {
     donorId,
     amount,
     currency: currency || "RS",
-    status: "Pending",
+    transactionId,
   });
 
   const createdDonation = await donation.save();

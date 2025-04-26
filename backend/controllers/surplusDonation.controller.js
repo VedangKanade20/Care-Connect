@@ -77,13 +77,6 @@ const updateSurplusDonation = async (req, res) => {
     throw new Error("Donation not found");
   }
 
-  if (
-    req.user.role !== "Admin" &&
-    !(req.user.role === "NGO_Staff" && req.user.staffType === "core")
-  ) {
-    res.status(403);
-    throw new Error("Not authorized to update donation status");
-  }
   donation.status = status || donation.status;
 
   const updatedDonation = await donation.save();

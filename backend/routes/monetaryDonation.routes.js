@@ -26,7 +26,7 @@ monetaryDonationRouter.get(
   getMonetaryDonation
 );
 monetaryDonationRouter.get(
-  "/get-donationById",
+  "/get-donationById/:id",
   protect,
   restrictToAdminAndNGOStaff,
   getMonetaryDonationById
@@ -37,4 +37,5 @@ monetaryDonationRouter.get(
   restrictToDonor,
   getMyMonetaryDonations
 );
+
 export default monetaryDonationRouter;

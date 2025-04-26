@@ -14,14 +14,14 @@ const monetaryDonationSchema = new mongoose.Schema({
     type: String,
     default: "RS",
   },
-  status: {
-    type: String,
-    enum: ["Pending", "Completed", "Failed"],
-    default: "Pending",
-  },
+  // status: {
+  //   type: String,
+  //   enum: ["Pending", "Completed", "Failed"],
+  //   default: "Pending",
+  // },
   transactionId: {
     type: String,
-  }, // From Stripe we will get this
+  },
   createdAt: {
     type: Date,
     default: Date.now,
