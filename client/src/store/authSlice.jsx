@@ -4,7 +4,7 @@ import {
   registerAPI,
   fetchProfileAPI,
   // updateProfileAPI,
-} from "../../services/authService";
+} from "../services/authService";
 
 const initialState = {
   authUser: null,

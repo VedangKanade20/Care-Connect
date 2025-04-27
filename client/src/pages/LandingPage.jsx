@@ -1,11 +1,12 @@
-import Header from "../components/LandingHeader";
-import Footer from "../components/LandingFooter";
+/* eslint-disable no-unused-vars */
+import LandingNavbar from "../components/landing/LandingNavbar";
+import LandingFooter from "../components/landing/LandingFooter";
 import { motion } from "framer-motion";
 
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      <Header />
+      <LandingNavbar />
       <section className="bg-blue-600 text-white py-20 text-center">
         <h2 className="text-4xl font-bold mb-4">Welcome to CareConnect</h2>
         <p className="text-lg mb-6">
@@ -67,7 +68,7 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      <Footer />
+      <LandingFooter />
     </div>
   );
 };

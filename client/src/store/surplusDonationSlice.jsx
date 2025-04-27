@@ -6,7 +6,7 @@ import {
 //   updateSurplusDonationAPI,
 //   deleteSurplusDonationAPI,
   getMySurplusDonationsAPI,
-} from "../../services/surplusService";
+} from "../services/surplusService";
 
 const initialState = {
   surplusDonations: [],

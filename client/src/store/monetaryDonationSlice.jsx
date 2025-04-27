@@ -3,7 +3,7 @@ import {
   createMonetaryDonationAPI,
   getMonetaryDonationsAPI,
   getMyMonetaryDonationsAPI,
-} from "../../services/monetaryService";
+} from "../services/monetaryService";
 
 // Initial state
 const initialState = {
