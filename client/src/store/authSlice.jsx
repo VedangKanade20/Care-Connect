@@ -1,27 +1,12 @@
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   loginAPI,
   registerAPI,
   fetchProfileAPI,
-  updateProfileAPI,
+  // updateProfileAPI,
 } from "../../services/authService";
 
-interface User {
-  _id: string;
-  email: string;
-  role: "Donor" | "NGO_Staff" | "Admin";
-  staffType?: "core" | "delivery";
-}
-
-interface AuthState {
-  authUser: User | null;
-  token: string | null;
-  loading: boolean;
-  error: string | null;
-}
-
-const initialState: AuthState = {
+const initialState = {
   authUser: null,
   token: null,
   loading: false,
@@ -31,30 +16,28 @@ const initialState: AuthState = {
 // Thunks
 export const login = createAsyncThunk(
   "auth/login",
-  async (payload: { email: string; password: string }, thunkAPI) => {
+  async ({ email, password }, thunkAPI) => {
     try {
-      const response = await loginAPI(payload);
+      const response = await loginAPI({ email, password });
       return response;
-    } catch (error: unknown) {
-      if (error instanceof Error && error.message) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-      return thunkAPI.rejectWithValue("An unknown error occurred");
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error instanceof Error ? error.message : "An unknown error occurred"
+      );
     }
   }
 );
 
 export const register = createAsyncThunk(
   "auth/register",
-  async (payload: any, thunkAPI) => {
+  async (payload, thunkAPI) => {
     try {
       const response = await registerAPI(payload);
       return response;
-    } catch (error: unknown) {
-      if (error instanceof Error && error.message) {
-        return thunkAPI.rejectWithValue(error.message);
-      }
-      return thunkAPI.rejectWithValue("An unknown error occurred");
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error instanceof Error ? error.message : "An unknown error occurred"
+      );
     }
   }
 );
@@ -65,9 +48,10 @@ export const fetchProfile = createAsyncThunk(
     try {
       const response = await fetchProfileAPI();
       return response;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response.data.message);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || "Failed to fetch profile"
+      );
     }
   }
 );
@@ -97,20 +81,19 @@ const authSlice = createSlice({
       })
       .addCase(login.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.payload;
       })
 
       .addCase(register.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state) => {
         state.loading = false;
-        // User might need login again after register
       })
       .addCase(register.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.payload;
       })
 
       .addCase(fetchProfile.pending, (state) => {
@@ -122,7 +105,7 @@ const authSlice = createSlice({
       })
       .addCase(fetchProfile.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.payload;
       });
   },
 });
