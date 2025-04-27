@@ -1,0 +1,12 @@
+import API from "../lib/axios";
+
+export const createMonetaryDonationAPI = (payload) =>
+  API.post("/api/donations/monetary", payload);
+
+export const getMonetaryDonationsAPI = () => API.get("/api/donations/monetary");
+
+export const getMyMonetaryDonationsAPI = () =>
+  API.get("/api/donations/monetary/my");
+
+export const getMonetaryDonationByIdAPI = (id) =>
+  API.get(`/api/donations/monetary/${id}`);
