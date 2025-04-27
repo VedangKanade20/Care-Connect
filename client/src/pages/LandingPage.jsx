@@ -91,6 +91,61 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+      <section className="py-16 px-4 bg-gray-800">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold text-center mb-8">How We Help</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col items-center">
+              <img
+                src="https://unsplash.com/photos/above-angle-of-two-volunteers-in-uniform-spreading-food-among-refugees-with-containers-standing-in-queue-by-table-pZCPPA-rtqY"
+                alt="Food Donation"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Food Donations</h3>
+              <p className="text-gray-400 text-center">
+                We collect surplus food from businesses and individuals to
+                distribute to those in need, reducing waste and hunger.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img
+                src="https://images.unsplash.com/photo-1576675763362-9e6b7d4d4c25?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+                alt="Clothing Donation"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Clothing Donations</h3>
+              <p className="text-gray-400 text-center">
+                Donate gently used clothes to provide warmth and dignity to
+                communities facing poverty.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img
+                src="https://unsplash.com/photos/person-showing-both-hands-with-make-a-change-note-and-coins-K0E6E0a0R3A"
+                alt="Monetary Support"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Monetary Support</h3>
+              <p className="text-gray-400 text-center">
+                Your financial contributions help NGOs expand their outreach and
+                support more people in need.
+              </p>
+            </div>
+            <div className="flex flex-col items-center">
+              <img
+                src="https://unsplash.com/photos/male-volunteer-holding-packed-donation-box-while-standing-by-table-with-free-food-x_mAqjO2mXo"
+                alt="Community Impact"
+                className="w-full h-48 object-cover rounded-lg mb-4"
+              />
+              <h3 className="text-xl font-semibold mb-2">Community Impact</h3>
+              <p className="text-gray-400 text-center">
+                Together, we empower communities by ensuring resources reach
+                those who need them most.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <section className="py-16 px-4 bg-blue-600 text-white text-center">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl font-bold mb-4">
