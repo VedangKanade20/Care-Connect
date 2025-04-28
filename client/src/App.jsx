@@ -1,27 +1,106 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
-import Dashboard from "./pages/dashboard/DonorDashboard";
-import ProtectedRoute from "./components/common/ProtectedRoute";
+
+import DonorDashboard from "./pages/dashboard/DonorDashboard";
+import AdminDashboard from "./pages/dashboard/AdminDashboard";
+import NGOStaffDashboard from "./pages/dashboard/NGOStaffDashboard";
+import DeliveryDashboard from "./pages/dashboard/DeliveryDashboard";
+
+import SurplusDonationPage from "./pages/donations/SurplusDonationPage";
+import MonetaryDonationPage from "./pages/donations/MonetaryDonationPage";
+
 import MainLayout from "./pages/layouts/MainLayout";
+import ProtectedRoute from "./components/common/ProtectedRoute";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Public Pages */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
 
-        {/* Protected Routes */}
+        {/* Donor Routes */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <MainLayout>
-                <Dashboard />
+                <DonorDashboard />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/surplus-donation"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <SurplusDonationPage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/monetary-donation"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <MonetaryDonationPage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Admin Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <AdminDashboard />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/list-donations"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <AdminDashboard />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* NGO Staff (Core Member) Routes */}
+        <Route
+          path="/staff"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <NGOStaffDashboard />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Delivery Partner Routes */}
+        <Route
+          path="/delivery"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <DeliveryDashboard />
               </MainLayout>
             </ProtectedRoute>
           }

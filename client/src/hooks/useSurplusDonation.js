@@ -7,7 +7,7 @@ import {
 
 export function useSurplusDonation() {
   const dispatch = useDispatch();
-  const { surplusDonation, mySurplusDonation, loading, error } = useSelector(
+  const { surplusDonations, mySurplusDonations, loading, error } = useSelector(
     (state) => state.surplusDonation
   );
 
@@ -23,8 +23,8 @@ export function useSurplusDonation() {
     return dispatch(fetchMySurplusDonations());
   };
   return {
-    surplusDonation,
-    mySurplusDonation,
+    surplusDonations,
+    mySurplusDonations,
     loading,
     error,
     createDonation,

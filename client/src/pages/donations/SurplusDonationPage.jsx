@@ -1,123 +1,106 @@
-import { useState, useEffect } from "react";
-import { useSurplusDonation } from "../../hooks/useSurplusDonation";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useSurplusDonation } from "../../hooks/useSurplusDonation";
 
 const SurplusDonationPage = () => {
-  const {
-    createDonation,
-    mySurplusDonations,
-    getMySurplusDonations,
-    loading,
-    
-  } = useSurplusDonation();
+  const { createDonation, loading } = useSurplusDonation();
 
+  // State to manage form data
   const [formData, setFormData] = useState({
-    type: "Food",
+    type: "Food", // Default value for the dropdown
     description: "",
     pickupPreference: "",
-    fileUrl: "", // handle file upload later
   });
 
-  useEffect(() => {
-    getMySurplusDonations();
-  }, []);
-
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await createDonation(formData);
-
-    if (result?.meta?.requestStatus === "fulfilled") {
+    try {
+      // Call the `createDonation` function with the form data
+      await createDonation(formData).unwrap();
       toast.success("Surplus donation submitted successfully!");
+
+      // Reset the form after successful submission
       setFormData({
-        type: "Food",
+        type: "Food", // Reset to default value
         description: "",
         pickupPreference: "",
-        fileUrl: "",
       });
-      getMySurplusDonations();
-    } else {
-      toast.error("Failed to submit donation. Try again.");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to submit surplus donation.");
     }
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-6 text-white">Surplus Donation</h1>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-6">Donate Surplus Items</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="bg-gray-900 p-6 rounded-lg shadow-lg space-y-6 max-w-2xl"
-      >
-        <div>
-          <label className="block mb-1 text-gray-400">Type</label>
-          <select
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-            className="w-full p-3 bg-gray-800 rounded-lg"
+      <div className="border border-slate-700 rounded-lg p-4 shadow-md mt-6 bg-slate-800">
+        <h2 className="text-xl font-semibold text-white">
+          Surplus Donation Form
+        </h2>
+        <form onSubmit={handleSubmit} className="mt-4">
+          {/* Dropdown for Item Type */}
+          <div className="mb-4">
+            <label className="block text-slate-300 mb-1">Item Type</label>
+            <select
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+              className="w-full p-2 border border-slate-600 rounded-md bg-slate-700 text-white"
+              required
+            >
+              <option value="Food">Food</option>
+              <option value="Clothes">Clothes</option>
+            </select>
+          </div>
+
+          {/* Description Field */}
+          <div className="mb-4">
+            <label className="block text-slate-300 mb-1">Description</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              className="w-full p-2 border border-slate-600 rounded-md bg-slate-700 text-white"
+              rows="3"
+              placeholder="Describe the surplus items (e.g., At a party we have kept food for 15-20 people)"
+              required
+            ></textarea>
+          </div>
+
+          {/* Pickup Preference Field */}
+          <div className="mb-4">
+            <label className="block text-slate-300 mb-1">
+              Pickup Preference
+            </label>
+            <input
+              type="text"
+              name="pickupPreference"
+              value={formData.pickupPreference}
+              onChange={handleChange}
+              className="w-full p-2 border border-slate-600 rounded-md bg-slate-700 text-white"
+              placeholder="e.g., 27th April around 8pm"
+              required
+            />
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-emerald-600 hover:bg-emerald-500 text-white py-2 px-4 rounded-md transition-colors"
           >
-            <option value="Food">Food</option>
-            <option value="Clothes">Clothes</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="block mb-1 text-gray-400">Description</label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full p-3 bg-gray-800 rounded-lg"
-            rows="4"
-          />
-        </div>
-
-        <div>
-          <label className="block mb-1 text-gray-400">Pickup Preference</label>
-          <input
-            type="text"
-            name="pickupPreference"
-            value={formData.pickupPreference}
-            onChange={handleChange}
-            className="w-full p-3 bg-gray-800 rounded-lg"
-          />
-        </div>
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold transition"
-        >
-          {loading ? "Submitting..." : "Submit Donation"}
-        </button>
-      </form>
-
-      <div className="mt-12">
-        <h2 className="text-2xl font-bold mb-4 text-white">My Donations</h2>
-
-        {mySurplusDonations?.length === 0 ? (
-          <p className="text-gray-400">No donations yet.</p>
-        ) : (
-          <ul className="space-y-4">
-            {mySurplusDonations.map((donation) => (
-              <li
-                key={donation._id}
-                className="bg-gray-800 p-4 rounded-lg shadow"
-              >
-                <p className="text-white font-semibold">{donation.type}</p>
-                <p className="text-gray-400">{donation.description}</p>
-                <p className="text-sm text-gray-500">
-                  Status: {donation.status}
-                </p>
-              </li>
-            ))}
-          </ul>
-        )}
+            {loading ? "Submitting..." : "Submit Donation"}
+          </button>
+        </form>
       </div>
     </div>
   );

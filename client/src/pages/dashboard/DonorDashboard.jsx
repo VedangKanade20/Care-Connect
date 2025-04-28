@@ -1,26 +1,3 @@
-// import { useEffect } from "react";
-// import { toast } from "react-hot-toast";
-
-// const DonorDashboard = () => {
-//   useEffect(() => {
-//     toast.success("Welcome to Donor Dashboard!");
-//   }, []);
-//   return (
-//     <div>
-//       <h1 className="text-2xl font-bold text-white">
-//         Welcome to Donor Dashboard
-//       </h1>
-//       <p className="mt-4 text-gray-400">
-//         Here you can manage your surplus and monetary donations.
-//       </p>
-//     </div>
-//   );
-// };
-
-// export default DonorDashboard;
-
-//grok
-
 import { useEffect } from "react";
 import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -30,43 +7,59 @@ const DonorDashboard = () => {
     toast.success("Welcome to Donor Dashboard!");
   }, []);
 
+  const handleMakePayment = () => {
+    toast.success("Payment processed!");
+  };
+
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-900">
+    <div className="p-6 bg-slate-900 text-slate-100">
+      <h1 className="text-3xl font-bold text-white mb-2">
         Welcome to Donor Dashboard
       </h1>
-      <p className="mt-4 text-gray-600">
-        Here you can manage your surplus and monetary donations.
+      <p className="text-slate-300 text-lg">
+        Start helping by donating surplus goods or monetary support.
       </p>
-      <div className="grid grid-cols-2 gap-6 mt-6">
-        <div className="border rounded-lg p-4 shadow-md">
-          <button
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            onClick={() => console.log("Close Surplus Donation")}
-          >
-            ×
+
+      {/* Surplus Donation Section */}
+      <div className="border border-slate-700 rounded-lg p-4 shadow-md mt-6 bg-slate-800">
+        <h2 className="text-xl font-semibold text-white">Surplus Donations</h2>
+        <p className="mt-2 text-slate-300">
+          Surplus donations involve contributing excess goods such as food,
+          clothes, or other essentials that you no longer need. These donations
+          help support communities in need by redistributing resources that
+          might otherwise go to waste.
+        </p>
+        <Link to="/surplus-donation">
+          <button className="mt-4 bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md transition-colors">
+            Donate Surplus Goods
           </button>
-          <h2 className="text-lg font-semibold">Surplus Donation</h2>
-          <Link to="/surplus">
-            <button className="mt-4 bg-gray-300 hover:bg-gray-400 text-gray-900 py-2 px-4 rounded-md">
-              Donate Surplus
-            </button>
-          </Link>
-        </div>
-        <div className="border rounded-lg p-4 shadow-md">
-          <button
-            className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-            onClick={() => console.log("Close Monetary Donation")}
-          >
-            ×
+        </Link>
+      </div>
+
+      {/* Monetary Donation Section */}
+      <div className="border border-slate-700 rounded-lg p-4 shadow-md mt-6 bg-slate-800">
+        <h2 className="text-xl font-semibold text-white">Monetary Donations</h2>
+        <p className="mt-2 text-slate-300">
+          Monetary donations are financial contributions that help fund
+          essential programs, services, and resources for those in need. Your
+          support can make a significant impact by providing direct financial
+          assistance to our initiatives.
+        </p>
+        <Link to="/monetary-donation">
+          <button className="mt-4 bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md transition-colors">
+            Donate Money
           </button>
-          <h2 className="text-lg font-semibold">Monetary Donation</h2>
-          <Link to="/monetary">
-            <button className="mt-4 bg-gray-300 hover:bg-gray-400 text-gray-900 py-2 px-4 rounded-md">
-              Donate Money
-            </button>
-          </Link>
-        </div>
+        </Link>
+      </div>
+
+      <div className="border border-slate-700 rounded-lg p-4 shadow-md mt-6 bg-slate-800">
+        <h2 className="text-xl font-semibold text-white">Payment Processing</h2>
+        <button
+          onClick={handleMakePayment}
+          className="mt-4 bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-md transition-colors"
+        >
+          Process Payment
+        </button>
       </div>
     </div>
   );

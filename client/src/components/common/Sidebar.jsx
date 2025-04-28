@@ -1,61 +1,3 @@
-// import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
-
-// const Sidebar = () => {
-//   const { authUser } = useSelector((state) => state.auth);
-
-//   if (!authUser) return null;
-
-//   return (
-//     <aside className="bg-gray-900 text-gray-300 h-screen w-64 p-6 flex flex-col space-y-6 fixed">
-//       <Link to="/dashboard" className="text-xl font-bold text-blue-500 mb-4">
-//         Dashboard
-//       </Link>
-
-//       {/* Role based Links */}
-//       {authUser.role === "Donor" && (
-//         <>
-//           <Link to="/surplus" className="hover:text-blue-400">
-//             Surplus Donation
-//           </Link>
-//           <Link to="/monetary" className="hover:text-blue-400">
-//             Monetary Donation
-//           </Link>
-//         </>
-//       )}
-
-//       {authUser.role === "NGO_Staff" && authUser.staffType === "core" && (
-//         <>
-//           <Link to="/dashboard" className="hover:text-blue-400">
-//             Manage Surplus Donations
-//           </Link>
-//         </>
-//       )}
-
-//       {authUser.role === "NGO_Staff" && authUser.staffType === "delivery" && (
-//         <>
-//           <Link to="/delivery" className="hover:text-blue-400">
-//             Delivery Dashboard
-//           </Link>
-//         </>
-//       )}
-
-//       {authUser.role === "Admin" && (
-//         <>
-//           <Link to="/admin" className="hover:text-blue-400">
-//             Admin Dashboard
-//           </Link>
-//           <Link to="/users" className="hover:text-blue-400">
-//             Manage Users
-//           </Link>
-//         </>
-//       )}
-//     </aside>
-//   );
-// };
-
-// export default Sidebar;
-
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -65,43 +7,64 @@ const Sidebar = () => {
   if (!authUser) return null;
 
   return (
-    <aside className="bg-gray-200 text-gray-900 h-screen w-64 p-6 flex flex-col space-y-6 fixed">
-      <Link to="/dashboard" className="text-xl font-bold text-blue-500 mb-4">
+    <aside className="bg-slate-800 text-slate-100 h-screen w-64 p-6 flex flex-col space-y-4 fixed border-r border-slate-700 ">
+      <Link
+        to="/dashboard"
+        className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+      >
         Dashboard
       </Link>
 
       {authUser.role === "Donor" && (
         <>
-          <Link to="/surplus" className="hover:text-blue-400">
+          <Link
+            to="/surplus-donation"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
             Surplus Donation
           </Link>
-          <Link to="/monetary" className="hover:text-blue-400">
+          <Link
+            to="/monetary-donation"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
             Monetary Donation
           </Link>
         </>
       )}
 
+      {authUser.role === "Admin" && (
+        <>
+          <Link
+            to="/admin/dashboard "
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Admin Dashboard
+          </Link>
+          <Link
+            to="/users"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Manage Users
+          </Link>
+        </>
+      )}
+
       {authUser.role === "NGO_Staff" && authUser.staffType === "core" && (
-        <Link to="/dashboard" className="hover:text-blue-400">
-          Manage Surplus Donations
+        <Link
+          to="/dashboard"
+          className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+        >
+          Manage Surplus
         </Link>
       )}
 
       {authUser.role === "NGO_Staff" && authUser.staffType === "delivery" && (
-        <Link to="/delivery" className="hover:text-blue-400">
+        <Link
+          to="/delivery"
+          className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+        >
           Delivery Dashboard
         </Link>
-      )}
-
-      {authUser.role === "Admin" && (
-        <>
-          <Link to="/admin" className="hover:text-blue-400">
-            Admin Dashboard
-          </Link>
-          <Link to="/users" className="hover:text-blue-400">
-            Manage Users
-          </Link>
-        </>
       )}
     </aside>
   );

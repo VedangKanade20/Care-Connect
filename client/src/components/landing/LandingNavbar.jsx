@@ -14,14 +14,14 @@ const LandingNavbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">
           <motion.a
-            href="#about"
+            href="/about"
             className="text-white hover:text-blue-500 transition duration-300"
             whileHover={{ scale: 1.05 }}
           >
             About
           </motion.a>
           <motion.a
-            href="#contact"
+            href="/contact"
             className="text-white hover:text-blue-500 transition duration-300"
             whileHover={{ scale: 1.05 }}
           >

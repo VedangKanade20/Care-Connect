@@ -18,7 +18,7 @@ const LoginPage = () => {
   useEffect(() => {
     console.log("authUser in useEffect:", authUser); // Log the authUser state
     if (authUser && authUser !== null) {
-      console.log("Navigating to /dashboard"); // Log navigation
+      console.log("Navigating to dashboard"); // Log navigation
       navigate("/dashboard");
     }
   }, [authUser, navigate]);

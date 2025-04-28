@@ -85,7 +85,6 @@ const RegisterPage = () => {
             >
               <option value="Donor">Donor</option>
               <option value="NGO_Staff">NGO Staff</option>
-              <option value="Admin">Admin</option>
             </select>
           </div>
 
@@ -98,7 +97,9 @@ const RegisterPage = () => {
                 onChange={handleChange}
                 className="w-full p-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="">Select Staff Type</option>
+                <option value="" disabled>
+                  Select Staff Type
+                </option>
                 <option value="core">Core Staff</option>
                 <option value="delivery">Delivery Partner</option>
               </select>

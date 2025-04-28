@@ -13,7 +13,7 @@ const LandingPage = () => {
           Connecting communities through donations and support.
         </p>
         <motion.a
-          href="#"
+          href="/login"
           className="inline-block bg-white text-blue-600 py-2 px-6 text-lg rounded-lg hover:bg-gray-100"
           whileHover={{ scale: 1.05 }}
         >
@@ -37,7 +37,7 @@ const LandingPage = () => {
             here to bridge the gap.
           </p>
           <motion.a
-            href="#"
+            href="/about"
             className="inline-block bg-blue-600 text-white py-2 px-6 text-lg rounded-lg hover:bg-blue-700"
             whileHover={{ scale: 1.05 }}
           >
@@ -97,7 +97,7 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col items-center">
               <img
-                src="https://unsplash.com/photos/above-angle-of-two-volunteers-in-uniform-spreading-food-among-refugees-with-containers-standing-in-queue-by-table-pZCPPA-rtqY"
+                src="https://media.istockphoto.com/id/1498170916/photo/a-couple-is-taking-a-bag-of-food-at-the-food-and-clothes-bank.jpg?s=612x612&w=0&k=20&c=0fnD_g46lvoZ5NdzX5zYOSM4PzM95ezfs5uMe9D1QKs="
                 alt="Food Donation"
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
@@ -109,7 +109,7 @@ const LandingPage = () => {
             </div>
             <div className="flex flex-col items-center">
               <img
-                src="https://images.unsplash.com/photo-1576675763362-9e6b7d4d4c25?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60"
+                src="https://i0.wp.com/www.socialnews.xyz/wp-content/uploads/2025/04/02/20250402311F-scaled.jpg?fit=2560%2C1821&quality=80&zoom=1&ssl=1?v=1743599036"
                 alt="Clothing Donation"
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
@@ -121,7 +121,7 @@ const LandingPage = () => {
             </div>
             <div className="flex flex-col items-center">
               <img
-                src="https://unsplash.com/photos/person-showing-both-hands-with-make-a-change-note-and-coins-K0E6E0a0R3A"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTkTZQ66fseAFl9HcOjm_NiHC9AmS8K6-zRA&s"
                 alt="Monetary Support"
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
@@ -133,7 +133,7 @@ const LandingPage = () => {
             </div>
             <div className="flex flex-col items-center">
               <img
-                src="https://unsplash.com/photos/male-volunteer-holding-packed-donation-box-while-standing-by-table-with-free-food-x_mAqjO2mXo"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYCE6uFNBOiBmYCzaTM1s9nJ9w7Ci07MZrVA&s"
                 alt="Community Impact"
                 className="w-full h-48 object-cover rounded-lg mb-4"
               />
@@ -156,7 +156,7 @@ const LandingPage = () => {
             Bridging generosity to relief.
           </p>
           <motion.a
-            href="#"
+            href="/login"
             className="inline-block bg-white text-blue-600 py-2 px-6 text-lg rounded-lg hover:bg-gray-100"
             whileHover={{ scale: 1.05 }}
           >
