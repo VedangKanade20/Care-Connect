@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../store/authSlice";
 
-export function useRegister() {
+function useRegister() {
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
 
   const registerUser = (payload) => {
-    dispatch(register(payload));
+    return dispatch(register(payload));
   };
 
   return {
@@ -15,3 +15,5 @@ export function useRegister() {
     error,
   };
 }
+
+export default useRegister;

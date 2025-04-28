@@ -12,15 +12,15 @@ export function useSurplusDonation() {
   );
 
   const createDonation = (payload) => {
-    dispatch(createSurplusDonation(payload));
+    return dispatch(createSurplusDonation(payload));
   };
 
   const getAllSurplusDonation = () => {
-    dispatch(fetchSurplusDonations());
+    return dispatch(fetchSurplusDonations());
   };
 
   const getMySurplusDonations = () => {
-    dispatch(fetchMySurplusDonations());
+    return dispatch(fetchMySurplusDonations());
   };
   return {
     surplusDonation,

@@ -1,24 +1,40 @@
 import { useNavigate } from "react-router-dom";
-import { useLogin } from "../../hooks/useLogin";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import LandingFooter from "../../components/landing/LandingFooter";
+import { useLogin } from "../../hooks/useLogin.js";
+import { fetchProfile } from "../../store/authSlice";
 
 const LoginPage = () => {
   const { loginUser, loading, error } = useLogin();
-
+  const { authUser } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    console.log("authUser in useEffect:", authUser); // Log the authUser state
+    if (authUser && authUser !== null) {
+      console.log("Navigating to /dashboard"); // Log navigation
+      navigate("/dashboard");
+    }
+  }, [authUser, navigate]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const result = await loginUser({ email, password });
 
     if (result?.meta?.requestStatus === "fulfilled") {
-      toast.success("Login successful!");
-      navigate("/dashboard");
+      try {
+        await dispatch(fetchProfile()); // Fetch latest user info after login
+        toast.success("Login successful!");
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+        toast.error("Failed to fetch user profile. Please try again.");
+      }
     } else {
       toast.error("Login failed. Please check your credentials.");
     }

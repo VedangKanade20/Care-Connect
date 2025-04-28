@@ -6,7 +6,7 @@ export function useFetchProfile() {
   const { authUser, loading, error } = useSelector((state) => state.auth);
 
   const getProfile = () => {
-    dispatch(fetchProfile());
+    return dispatch(fetchProfile());
   };
 
   return {

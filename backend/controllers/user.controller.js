@@ -13,6 +13,8 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
+    
+
     res.json({
       _id: user._id,
       name: user.name,

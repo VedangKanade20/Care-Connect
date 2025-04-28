@@ -6,7 +6,7 @@ export function useLogin() {
   const { loading, error, authUser } = useSelector((state) => state.auth);
 
   const loginUser = (credentials) => {
-    dispatch(login(credentials));
+    return dispatch(login(credentials));
   };
 
   return {

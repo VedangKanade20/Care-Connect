@@ -2,9 +2,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   createSurplusDonationAPI,
   getSurplusDonationsAPI,
-//   getSurplusDonationByIdAPI,
-//   updateSurplusDonationAPI,
-//   deleteSurplusDonationAPI,
+  //   getSurplusDonationByIdAPI,
+  //   updateSurplusDonationAPI,
+  //   deleteSurplusDonationAPI,
   getMySurplusDonationsAPI,
 } from "../services/surplusService";
 
@@ -16,38 +16,47 @@ const initialState = {
 };
 
 // Thunks
-export const createSurplusDonation = createAsyncThunk("surplus/create", async (payload, thunkAPI) => {
-  try {
-    const response = await createSurplusDonationAPI(payload);
-    return response;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(
-      error?.response?.data?.message || "Failed to create surplus donation"
-    );
+export const createSurplusDonation = createAsyncThunk(
+  "surplus/create",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await createSurplusDonationAPI(payload);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || "Failed to create surplus donation"
+      );
+    }
   }
-});
+);
 
-export const fetchSurplusDonations = createAsyncThunk("surplus/fetchAll", async (_, thunkAPI) => {
-  try {
-    const response = await getSurplusDonationsAPI();
-    return response;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(
-      error?.response?.data?.message || "Failed to fetch surplus donations"
-    );
+export const fetchSurplusDonations = createAsyncThunk(
+  "surplus/fetchAll",
+  async (_, thunkAPI) => {
+    try {
+      const response = await getSurplusDonationsAPI();
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || "Failed to fetch surplus donations"
+      );
+    }
   }
-});
+);
 
-export const fetchMySurplusDonations = createAsyncThunk("surplus/fetchMy", async (_, thunkAPI) => {
-  try {
-    const response = await getMySurplusDonationsAPI();
-    return response;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(
-      error?.response?.data?.message || "Failed to fetch my surplus donations"
-    );
+export const fetchMySurplusDonations = createAsyncThunk(
+  "surplus/fetchMy",
+  async (_, thunkAPI) => {
+    try {
+      const response = await getMySurplusDonationsAPI();
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || "Failed to fetch my surplus donations"
+      );
+    }
   }
-});
+);
 
 // Slice
 const surplusDonationSlice = createSlice({

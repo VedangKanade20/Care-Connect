@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { useRegister } from "../../hooks/useRegister";
+// import { useRegister } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import LandingFooter from "../../components/landing/LandingFooter";
+import useRegister from "../../hooks/useRegister.js";
 
 const RegisterPage = () => {
   const { registerUser, loading, error } = useRegister();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
     role: "Donor",
@@ -24,7 +26,7 @@ const RegisterPage = () => {
     e.preventDefault();
     const result = await registerUser(formData);
 
-    if (result?.meta?.requestStatus === "fulfilled") {
+    if (result.type === "auth/register/fulfilled") {
       toast.success("Registration successful! Please login.");
       navigate("/login");
     } else {
@@ -37,6 +39,18 @@ const RegisterPage = () => {
       <div className="w-full max-w-md bg-gray-900 p-8 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold mb-6 text-center">Sign Up</h2>
         <form onSubmit={handleRegister} className="space-y-6">
+          <div>
+            <label className="block text-gray-400 mb-1">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full p-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
           <div>
             <label className="block text-gray-400 mb-1">Email</label>
             <input

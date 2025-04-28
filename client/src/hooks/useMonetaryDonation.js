@@ -11,15 +11,15 @@ export function useMonetaryDonation() {
     useSelector((state) => state.monetaryDonation);
 
   const createDonation = (payload) => {
-    dispatch(createMonetaryDonation(payload));
+    return dispatch(createMonetaryDonation(payload));
   };
 
   const getAllMonetaryDonations = () => {
-    dispatch(fetchMonetaryDonations());
+    return dispatch(fetchMonetaryDonations());
   };
 
   const getMyMonetaryDonations = () => {
-    dispatch(fetchMyMonetaryDonations());
+    return dispatch(fetchMyMonetaryDonations());
   };
 
   return {
