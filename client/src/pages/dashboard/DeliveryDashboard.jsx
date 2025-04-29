@@ -3,10 +3,13 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const DeliveryDashboard = () => {
-  useEffect(() => toast.success("Welcome to Delivery Partner Dashboard!"), []);
+  useEffect(() => {
+    toast.success("Welcome to NGO Delivery Dashboard!");
+  }, []);
+
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-900">
+      <h1 className="text-2xl font-bold text-white">
         Welcome to Delivery Partner Dashboard
       </h1>
       <p className="mt-4 text-gray-600">Manage your deliveries here.</p>

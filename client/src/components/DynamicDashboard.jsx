@@ -14,9 +14,9 @@ const DynamicDashboard = () => {
       return <Navigate to="/admin/dashboard" replace />;
     case "NGO_Staff":
       if (authUser.staffType === "core") {
-        return <Navigate to="/staff" replace />;
+        return <Navigate to="/ngoCore/dashboard" replace />;
       } else if (authUser.staffType === "delivery") {
-        return <Navigate to="/delivery" replace />;
+        return <Navigate to="/ngoDelivery/dashboard" replace />;
       }
       break;
     default:

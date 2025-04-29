@@ -27,6 +27,8 @@ import ProtectedRoute from "./components/common/ProtectedRoute";
 import ManageMonetaryDonationsPage from "./pages/admin/ManageMonetaryDonationsPage";
 import ManageSurplusDonationsPage from "./pages/admin/ManageSurplusDonationsPage";
 import ManageUsersPage from "./pages/admin/ManageUsersPage";
+import AssignedDeliveriesPage from "./pages/NgoCore/AssignedDeliveriesPage";
+import PendingSurplusListPage from "./pages/NgoCore/PendingSurplusListPage";
 
 function App() {
   return (
@@ -148,10 +150,11 @@ function App() {
         />
 
         {/* NGO Staff (Core Member) Routes */}
+
         <Route
-          path="/staff"
+          path="/ngoCore/dashboard"
           element={
-            <ProtectedRoute allowedRoles={["NGO_Staff"]}>
+            <ProtectedRoute allowedRoles={["NGO_Staff"]} staffType="core">
               <MainLayout>
                 <NGOStaffDashboard />
               </MainLayout>
@@ -159,9 +162,31 @@ function App() {
           }
         />
 
+        <Route
+          path="/ngoCore/pending-surplus"
+          element={
+            <ProtectedRoute allowedRoles={["NGO_Staff"]} staffType="core">
+              <MainLayout>
+                <PendingSurplusListPage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/ngoCore/assigned-deliveries"
+          element={
+            <ProtectedRoute allowedRoles={["NGO_Staff"]} staffType="core">
+              <MainLayout>
+                <AssignedDeliveriesPage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+
         {/* Delivery Partner Routes */}
         <Route
-          path="/delivery"
+          path="/ngoDelivery/dashboard"
           element={
             <ProtectedRoute allowedRoles={["NGO_Staff"]}>
               <MainLayout>

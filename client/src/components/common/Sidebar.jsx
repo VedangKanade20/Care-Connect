@@ -74,12 +74,28 @@ const Sidebar = () => {
       )}
 
       {authUser.role === "NGO_Staff" && authUser.staffType === "core" && (
-        <Link
-          to="/dashboard"
-          className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
-        >
-          Manage Surplus
-        </Link>
+        <>
+          <Link
+            to="/ngoCore/dashboard"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Dashboard
+          </Link>
+
+          <Link
+            to="/ngoCore/pending-surplus"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Pending Surplus Donations
+          </Link>
+
+          <Link
+            to="/ngoCore/assigned-deliveries"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Assigned Deliveries
+          </Link>
+        </>
       )}
 
       {authUser.role === "NGO_Staff" && authUser.staffType === "delivery" && (
