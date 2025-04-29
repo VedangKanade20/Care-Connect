@@ -13,8 +13,6 @@ const loginUser = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
-    
-
     res.json({
       _id: user._id,
       name: user.name,
@@ -146,6 +144,29 @@ const getListOfUsers = asyncHandler(async (req, res) => {
   res.json(users);
 }); //checked
 
+/**
+ * @desc    Delete a user
+ * @route   DELETE /api/users/:id
+ * @access  private (Admin only)
+ */
+const deleteUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (!user) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  // Check if the requesting user is an Admin
+  if (req.user.role !== "Admin") {
+    res.status(403);
+    throw new Error("Only admins can delete users");
+  }
+
+  await user.remove();
+  res.json({ message: "User deleted successfully" });
+});
+
 export {
   loginUser,
   registerUser,
@@ -153,4 +174,5 @@ export {
   updateUserProfile,
   userProfile,
   getListOfUsers,
+  deleteUser,
 };

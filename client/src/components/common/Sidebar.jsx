@@ -8,15 +8,21 @@ const Sidebar = () => {
 
   return (
     <aside className="bg-slate-800 text-slate-100 h-screen w-64 p-6 flex flex-col space-y-4 fixed border-r border-slate-700 ">
-      <Link
+      {/* <Link
         to="/dashboard"
         className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
       >
         Dashboard
-      </Link>
+      </Link> */}
 
       {authUser.role === "Donor" && (
         <>
+          <Link
+            to="/dashboard"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Dashboard
+          </Link>
           <Link
             to="/surplus-donation"
             className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
@@ -41,16 +47,28 @@ const Sidebar = () => {
       {authUser.role === "Admin" && (
         <>
           <Link
-            to="/admin/dashboard "
+            to="/admin/dashboard"
             className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
           >
             Admin Dashboard
           </Link>
           <Link
-            to="/users"
+            to="/admin/users"
             className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
           >
             Manage Users
+          </Link>
+          <Link
+            to="/admin/surplus"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Manage Surplus Donations
+          </Link>
+          <Link
+            to="/admin/monetary"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Manage Monetary Donations
           </Link>
         </>
       )}

@@ -146,6 +146,7 @@ import {
   loginAPI,
   registerAPI,
   fetchProfileAPI,
+  deleteUserAPI,
 } from "../services/authService";
 
 // Safely load from localStorage
@@ -217,6 +218,21 @@ export const fetchProfile = createAsyncThunk(
   }
 );
 
+export const deleteUser = createAsyncThunk(
+  "auth/deleteUser",
+  async (userId, thunkAPI) => {
+    try {
+      const response = await deleteUserAPI(userId);
+      return { userId, message: response.data.message };
+    } catch (error) {
+      console.error("Delete User API Error:", error);
+      return thunkAPI.rejectWithValue(
+        error?.response?.data?.message || "Failed to delete user"
+      );
+    }
+  }
+);
+
 // Slice
 const authSlice = createSlice({
   name: "auth",
@@ -275,6 +291,24 @@ const authSlice = createSlice({
         state.authUser = action.payload; // Use the full payload as authUser
       })
       .addCase(fetchProfile.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteUser.fulfilled, (state, action) => {
+        state.loading = false;
+        // If the deleted user is the current user, log them out
+        if (state.authUser && state.authUser._id === action.payload.userId) {
+          state.authUser = null;
+          state.token = null;
+          localStorage.removeItem("authUser");
+          localStorage.removeItem("token");
+        }
+      })
+      .addCase(deleteUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

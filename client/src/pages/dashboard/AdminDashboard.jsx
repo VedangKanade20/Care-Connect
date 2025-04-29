@@ -3,10 +3,12 @@ import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
-  useEffect(() => toast.success("Welcome to Admin Dashboard!"), []);
+  useEffect(() => {
+    toast.success("Welcome to Admin Dashboard!");
+  }, []);
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-900">
+      <h1 className="text-2xl font-bold text-white">
         Welcome to Admin Dashboard
       </h1>
       <p className="mt-4 text-gray-600">
@@ -18,7 +20,7 @@ const AdminDashboard = () => {
             ×
           </button>
           <h2 className="text-lg font-semibold">Manage Users</h2>
-          <Link to="/users">
+          <Link to="/admin/users">
             <button className="mt-4 bg-gray-300 hover:bg-gray-400 text-gray-900 py-2 px-4 rounded-md">
               Go to Users
             </button>

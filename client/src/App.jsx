@@ -3,23 +3,30 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
-
-import DonorDashboard from "./pages/dashboard/DonorDashboard";
-import AdminDashboard from "./pages/dashboard/AdminDashboard";
-import NGOStaffDashboard from "./pages/dashboard/NGOStaffDashboard";
-import DeliveryDashboard from "./pages/dashboard/DeliveryDashboard";
-
-import SurplusDonationPage from "./pages/donations/SurplusDonationPage";
-import MonetaryDonationPage from "./pages/donations/MonetaryDonationPage";
-
-import MainLayout from "./pages/layouts/MainLayout";
-import ProtectedRoute from "./components/common/ProtectedRoute";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import ProfilePage from "./pages/auth/ProfilePage";
 import NewsFeedPage from "./pages/NewsFeedPage";
 import TutorialPage from "./pages/TutorialPage";
+
+// Dashboards
+import DonorDashboard from "./pages/dashboard/DonorDashboard";
+import AdminDashboard from "./pages/dashboard/AdminDashboard";
+import NGOStaffDashboard from "./pages/dashboard/NGOStaffDashboard";
+import DeliveryDashboard from "./pages/dashboard/DeliveryDashboard";
+import DynamicDashboard from "./components/DynamicDashboard"; // New!
+
+// Donation Pages
+import SurplusDonationPage from "./pages/donations/SurplusDonationPage";
+import MonetaryDonationPage from "./pages/donations/MonetaryDonationPage";
 import DonationHistoryPage from "./pages/donations/DonationHistoryPage";
+
+// Layouts & Route Protection
+import MainLayout from "./pages/layouts/MainLayout";
+import ProtectedRoute from "./components/common/ProtectedRoute";
+import ManageMonetaryDonationsPage from "./pages/admin/ManageMonetaryDonationsPage";
+import ManageSurplusDonationsPage from "./pages/admin/ManageSurplusDonationsPage";
+import ManageUsersPage from "./pages/admin/ManageUsersPage";
 
 function App() {
   return (
@@ -38,7 +45,7 @@ function App() {
         <Route
           path="/profile"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Donor", "Admin", "NGO_Staff"]}>
               <MainLayout>
                 <ProfilePage />
               </MainLayout>
@@ -46,11 +53,21 @@ function App() {
           }
         />
 
-        {/* Donor Routes */}
+        {/* Dynamic Dashboard */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
+              <DynamicDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Donor Specific Dashboard */}
+        <Route
+          path="/dashboard/donor"
+          element={
+            <ProtectedRoute allowedRoles={["Donor"]}>
               <MainLayout>
                 <DonorDashboard />
               </MainLayout>
@@ -60,7 +77,7 @@ function App() {
         <Route
           path="/surplus-donation"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Donor"]}>
               <MainLayout>
                 <SurplusDonationPage />
               </MainLayout>
@@ -70,7 +87,7 @@ function App() {
         <Route
           path="/monetary-donation"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Donor"]}>
               <MainLayout>
                 <MonetaryDonationPage />
               </MainLayout>
@@ -80,7 +97,7 @@ function App() {
         <Route
           path="/donation-history"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Donor"]}>
               <MainLayout>
                 <DonationHistoryPage />
               </MainLayout>
@@ -92,7 +109,7 @@ function App() {
         <Route
           path="/admin/dashboard"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Admin"]}>
               <MainLayout>
                 <AdminDashboard />
               </MainLayout>
@@ -100,11 +117,31 @@ function App() {
           }
         />
         <Route
-          path="/admin/list-donations"
+          path="/admin/users"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["Admin"]}>
               <MainLayout>
-                <AdminDashboard />
+                <ManageUsersPage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/surplus"
+          element={
+            <ProtectedRoute allowedRoles={["Admin"]}>
+              <MainLayout>
+                <ManageSurplusDonationsPage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/monetary"
+          element={
+            <ProtectedRoute allowedRoles={["Admin"]}>
+              <MainLayout>
+                <ManageMonetaryDonationsPage />
               </MainLayout>
             </ProtectedRoute>
           }
@@ -114,7 +151,7 @@ function App() {
         <Route
           path="/staff"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["NGO_Staff"]}>
               <MainLayout>
                 <NGOStaffDashboard />
               </MainLayout>
@@ -126,13 +163,16 @@ function App() {
         <Route
           path="/delivery"
           element={
-            <ProtectedRoute>
+            <ProtectedRoute allowedRoles={["NGO_Staff"]}>
               <MainLayout>
                 <DeliveryDashboard />
               </MainLayout>
             </ProtectedRoute>
           }
         />
+
+        {/* Unauthorized or Fallback */}
+        <Route path="/unauthorized" element={<h1>Unauthorized</h1>} />
       </Routes>
     </Router>
   );
