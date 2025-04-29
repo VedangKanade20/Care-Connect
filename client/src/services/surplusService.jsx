@@ -6,7 +6,7 @@ export const createSurplusDonationAPI = (payload) =>
 export const getSurplusDonationsAPI = () => API.get("/api/donations/surplus");
 
 export const getMySurplusDonationsAPI = () =>
-  API.get("/api/donations/surplus/my");
+  API.get("/api/donations/surplus/my-donations");
 
 export const updateSurplusDonationAPI = (id, payload) =>
   API.patch(`/api/donations/surplus/${id}`, payload);

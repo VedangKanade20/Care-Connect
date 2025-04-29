@@ -7,20 +7,15 @@ import {
 
 export function useMonetaryDonation() {
   const dispatch = useDispatch();
+
   const { monetaryDonations, myMonetaryDonations, loading, error } =
     useSelector((state) => state.monetaryDonation);
 
-  const createDonation = (payload) => {
-    return dispatch(createMonetaryDonation(payload));
-  };
+  const createDonation = (payload) => dispatch(createMonetaryDonation(payload));
 
-  const getAllMonetaryDonations = () => {
-    return dispatch(fetchMonetaryDonations());
-  };
+  const getAllMonetaryDonations = () => dispatch(fetchMonetaryDonations());
 
-  const getMyMonetaryDonations = () => {
-    return dispatch(fetchMyMonetaryDonations());
-  };
+  const getMyMonetaryDonations = () => dispatch(fetchMyMonetaryDonations());
 
   return {
     monetaryDonations,

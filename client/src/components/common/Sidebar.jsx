@@ -29,6 +29,12 @@ const Sidebar = () => {
           >
             Monetary Donation
           </Link>
+          <Link
+            to="/donation-history"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Donation History
+          </Link>
         </>
       )}
 

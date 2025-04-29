@@ -15,7 +15,7 @@ const initialState = {
 
 // Thunks
 export const createMonetaryDonation = createAsyncThunk(
-  "/",
+  "monetary/",
   async (payload, thunkAPI) => {
     try {
       const response = await createMonetaryDonationAPI(payload);
@@ -39,7 +39,7 @@ export const fetchMonetaryDonations = createAsyncThunk(
 );
 
 export const fetchMyMonetaryDonations = createAsyncThunk(
-  "monetary/fetchMy",
+  "monetary/my-donations",
   async (_, thunkAPI) => {
     try {
       const response = await getMyMonetaryDonationsAPI();

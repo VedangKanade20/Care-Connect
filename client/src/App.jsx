@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 import ProfilePage from "./pages/auth/ProfilePage";
 import NewsFeedPage from "./pages/NewsFeedPage";
 import TutorialPage from "./pages/TutorialPage";
+import DonationHistoryPage from "./pages/donations/DonationHistoryPage";
 
 function App() {
   return (
@@ -72,6 +73,16 @@ function App() {
             <ProtectedRoute>
               <MainLayout>
                 <MonetaryDonationPage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donation-history"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <DonationHistoryPage />
               </MainLayout>
             </ProtectedRoute>
           }

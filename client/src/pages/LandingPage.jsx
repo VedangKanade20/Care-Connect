@@ -82,20 +82,20 @@ const LandingPage = () => {
           <h2 className="text-3xl font-bold mb-8">Our Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div>
-              <p className="text-4xl font-bold text-blue-400">500+</p>
-              <p className="text-gray-400">Tons of Food Donated</p>
+              <p className="text-4xl font-bold text-blue-400">5+</p>
+              <p className="text-gray-400">Food Donating NGOS Joined</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-blue-400">55,000</p>
+              <p className="text-4xl font-bold text-blue-400">5000</p>
               <p className="text-gray-400">Raised</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-blue-400">58,000</p>
+              <p className="text-4xl font-bold text-blue-400">5000</p>
               <p className="text-gray-400">People Supported</p>
             </div>
             <div>
-              <p className="text-4xl font-bold text-blue-400">550,000</p>
-              <p className="text-gray-400">NGOs Supported</p>
+              <p className="text-4xl font-bold text-blue-400">50</p>
+              <p className="text-gray-400">Donors Supported</p>
             </div>
           </div>
         </div>
