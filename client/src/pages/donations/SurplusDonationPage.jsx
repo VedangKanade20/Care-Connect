@@ -38,10 +38,22 @@ const SurplusDonationPage = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Donate Surplus Items</h1>
+    <div
+      className="p-6 min-h-screen"
+      style={{
+        backgroundImage: `url('https://nss-main.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/03/07180041/purnimalandingfoodpage.jpg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <h1 className="text-2xl text-center font-bold mb-6 bg-slate-800 w-fit">
+        Donate Surplus Items
+      </h1>
 
-      <div className="border border-slate-700 rounded-lg p-4 shadow-md mt-6 bg-slate-800">
+      <div
+        className="border border-slate-700 rounded-lg p-4 shadow-md mt-6 bg-slate-800"
+        style={{ opacity: 0.8 }}
+      >
         <h2 className="text-xl font-semibold text-white">
           Surplus Donation Form
         </h2>

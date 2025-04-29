@@ -14,7 +14,7 @@ import {
 const monetaryDonationRouter = express.Router();
 
 monetaryDonationRouter.post(
-  "/donate-money",
+  "/",
   protect,
   restrictToDonor,
   createMonetaryDonation

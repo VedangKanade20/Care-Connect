@@ -14,32 +14,41 @@ const initialState = {
 };
 
 // Thunks
-export const createMonetaryDonation = createAsyncThunk("monetary/create", async (payload, thunkAPI) => {
-  try {
-    const response = await createMonetaryDonationAPI(payload);
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+export const createMonetaryDonation = createAsyncThunk(
+  "/",
+  async (payload, thunkAPI) => {
+    try {
+      const response = await createMonetaryDonationAPI(payload);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 
-export const fetchMonetaryDonations = createAsyncThunk("monetary/fetchAll", async (_, thunkAPI) => {
-  try {
-    const response = await getMonetaryDonationsAPI();
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+export const fetchMonetaryDonations = createAsyncThunk(
+  "monetary/fetchAll",
+  async (_, thunkAPI) => {
+    try {
+      const response = await getMonetaryDonationsAPI();
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 
-export const fetchMyMonetaryDonations = createAsyncThunk("monetary/fetchMy", async (_, thunkAPI) => {
-  try {
-    const response = await getMyMonetaryDonationsAPI();
-    return response.data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+export const fetchMyMonetaryDonations = createAsyncThunk(
+  "monetary/fetchMy",
+  async (_, thunkAPI) => {
+    try {
+      const response = await getMyMonetaryDonationsAPI();
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 
 // Slice
 const monetaryDonationSlice = createSlice({

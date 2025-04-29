@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { useMonetaryDonation } from "../../hooks/useMonetaryDonation"; // (We will create this)
 
 const MonetaryDonationPage = () => {
-  const { createMonetaryDonation, loading } = useMonetaryDonation();
+  const { createDonation, loading } = useMonetaryDonation();
   const [amount, setAmount] = useState("");
 
   const handleSubmit = async (e) => {
@@ -15,7 +15,7 @@ const MonetaryDonationPage = () => {
     }
 
     try {
-      await createMonetaryDonation({ amount }).unwrap(); // placeholder, until payment comes
+      await createDonation({ amount }).unwrap(); // placeholder, until payment comes
       toast.success("Monetary donation created successfully!");
       setAmount("");
     } catch (error) {
@@ -25,7 +25,14 @@ const MonetaryDonationPage = () => {
   };
 
   return (
-    <div className="p-6">
+    <div
+      className="p-6"
+      style={{
+        backgroundImage: `url('https://d1umd1ua9snads.cloudfront.net/images/articles/_bannerWebp/72396/bigstock-Man-Holding-Money-Jar-With-Don-431800991.webp')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <h1 className="text-2xl font-bold mb-6">Donate Money</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <input
