@@ -7,7 +7,16 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <LandingNavbar />
-      <section className="bg-blue-600 text-white py-20 text-center">
+      <section
+        className="bg-blue-600 text-white py-20 text-center "
+        style={{
+          backgroundImage:
+            'url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzGfKqX8dji6tRNZkRYAkeLjGbZs136AoNw&s")',
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <h2 className="text-4xl font-bold mb-4">Welcome to CareConnect</h2>
         <p className="text-lg mb-6">
           Connecting communities through donations and support.

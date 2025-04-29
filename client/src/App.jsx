@@ -16,6 +16,9 @@ import MainLayout from "./pages/layouts/MainLayout";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import ProfilePage from "./pages/auth/ProfilePage";
+import NewsFeedPage from "./pages/NewsFeedPage";
+import TutorialPage from "./pages/TutorialPage";
 
 function App() {
   return (
@@ -27,6 +30,20 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/newsfeed" element={<NewsFeedPage />} />
+        <Route path="/tutorial" element={<TutorialPage />} />
+
+        {/* Profile Page */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <MainLayout>
+                <ProfilePage />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
 
         {/* Donor Routes */}
         <Route

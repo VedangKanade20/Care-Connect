@@ -1,7 +1,7 @@
 import API from "../lib/axios";
 
 export const createSurplusDonationAPI = (payload) =>
-  API.post("/api/donations/surplus", payload);
+  API.post("/api/donations/surplus/donate-surplus", payload);
 
 export const getSurplusDonationsAPI = () => API.get("/api/donations/surplus");
 

@@ -5,36 +5,35 @@ import { useSurplusDonation } from "../../hooks/useSurplusDonation";
 const SurplusDonationPage = () => {
   const { createDonation, loading } = useSurplusDonation();
 
-  // State to manage form data
   const [formData, setFormData] = useState({
-    type: "Food", // Default value for the dropdown
+    type: "Food",
     description: "",
     pickupPreference: "",
   });
 
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call the `createDonation` function with the form data
-      await createDonation(formData).unwrap();
-      toast.success("Surplus donation submitted successfully!");
+      const result = await createDonation(formData);
 
-      // Reset the form after successful submission
-      setFormData({
-        type: "Food", // Reset to default value
-        description: "",
-        pickupPreference: "",
-      });
+      if (result?.meta?.requestStatus === "fulfilled") {
+        toast.success("Surplus donation submitted successfully!");
+        setFormData({
+          type: "Food",
+          description: "",
+          pickupPreference: "",
+        });
+      } else {
+        toast.error("Failed to submit surplus donation.");
+      }
     } catch (error) {
       console.error(error);
-      toast.error("Failed to submit surplus donation.");
+      toast.error("An unexpected error occurred.");
     }
   };
 

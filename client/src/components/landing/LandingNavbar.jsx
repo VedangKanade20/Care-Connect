@@ -27,6 +27,19 @@ const LandingNavbar = () => {
           >
             Contact
           </motion.a>
+          <motion.a
+            href="/newsfeed"
+            className="text-white hover:text-blue-500 transition duration-300"
+            whileHover={{ scale: 1.05 }}
+          >
+            News Feed
+          </motion.a>
+          <Link
+            to="/tutorial"
+            className="hover:text-blue-300 transition-colors"
+          >
+            Tutorial
+          </Link>
         </nav>
 
         {/* Desktop Buttons */}
@@ -83,6 +96,13 @@ const LandingNavbar = () => {
             whileHover={{ scale: 1.05 }}
           >
             Contact
+          </motion.a>
+          <motion.a
+            href="/newsfeed"
+            className="block text-white py-2 hover:text-blue-500 transition duration-300"
+            whileHover={{ scale: 1.05 }}
+          >
+            News Feed
           </motion.a>
           <div className="space-y-4">
             <Link to="/login">
