@@ -29,6 +29,8 @@ import ManageSurplusDonationsPage from "./pages/admin/ManageSurplusDonationsPage
 import ManageUsersPage from "./pages/admin/ManageUsersPage";
 import AssignedDeliveriesPage from "./pages/NgoCore/AssignedDeliveriesPage";
 import PendingSurplusListPage from "./pages/NgoCore/PendingSurplusListPage";
+import ViewAssignedDeliveries from "./pages/NgoDelivery/ViewAssignedDeliveries";
+import CompletedDeliveriesList from "./pages/NgoDelivery/CompletedDeliveriesList";
 
 function App() {
   return (
@@ -191,6 +193,26 @@ function App() {
             <ProtectedRoute allowedRoles={["NGO_Staff"]}>
               <MainLayout>
                 <DeliveryDashboard />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ngoDelivery/viewAssDel"
+          element={
+            <ProtectedRoute allowedRoles={["NGO_Staff"]}>
+              <MainLayout>
+                <ViewAssignedDeliveries />
+              </MainLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/ngoDelivery/compDelList"
+          element={
+            <ProtectedRoute allowedRoles={["NGO_Staff"]}>
+              <MainLayout>
+                <CompletedDeliveriesList />
               </MainLayout>
             </ProtectedRoute>
           }

@@ -99,12 +99,26 @@ const Sidebar = () => {
       )}
 
       {authUser.role === "NGO_Staff" && authUser.staffType === "delivery" && (
-        <Link
-          to="/delivery"
-          className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
-        >
-          Delivery Dashboard
-        </Link>
+        <>
+          <Link
+            to="/ngoDelivery/dashboard"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Delivery Dashboard
+          </Link>
+          <Link
+            to="/ngoDelivery/viewAssDel"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Assigned Deliveries
+          </Link>
+          <Link
+            to="/ngoDelivery/compDelList"
+            className="hover:text-blue-300 transition-colors py-2 px-3 rounded hover:bg-slate-700"
+          >
+            Completed Deliveries List
+          </Link>
+        </>
       )}
     </aside>
   );
