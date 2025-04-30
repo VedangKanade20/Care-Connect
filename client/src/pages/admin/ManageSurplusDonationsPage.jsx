@@ -3,7 +3,7 @@ import {
   getSurplusDonationsAPI,
   getSurplusDonationByIdAPI,
 } from "../../services/surplusService";
-import { toast } from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 
 const ManageSurplusDonationsPage = () => {
   const [donations, setDonations] = useState([]);
@@ -42,16 +42,16 @@ const ManageSurplusDonationsPage = () => {
   };
 
   // Handle deleting donation locally (no backend needed)
-  const handleDelete = () => {
-    if (!window.confirm("Are you sure you want to delete this donation?"))
-      return;
+  // const handleDelete = () => {
+  //   if (!window.confirm("Are you sure you want to delete this donation?"))
+  //     return;
 
-    // Remove from local state
-    setDonations(donations.filter((d) => d._id !== selectedDonation._id));
-    setSelectedDonation(null);
-    setViewMode(false);
-    toast.success("Donation deleted");
-  };
+  //   // Remove from local state
+  //   setDonations(donations.filter((d) => d._id !== selectedDonation._id));
+  //   setSelectedDonation(null);
+  //   setViewMode(false);
+  //   toast.success("Donation deleted");
+  // };
 
   // Go back to list
   const handleBack = () => {
@@ -121,12 +121,6 @@ const ManageSurplusDonationsPage = () => {
           </div>
 
           <div className="mt-6 flex space-x-4">
-            <button
-              onClick={handleDelete}
-              className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded"
-            >
-              Delete Donation
-            </button>
             <button
               onClick={handleBack}
               className="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"

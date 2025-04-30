@@ -38,7 +38,7 @@ const NewsFeedPage = () => {
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
               >
-                Upcoming Fundraising Events
+                Upcoming Fundraising Events.
               </a>
             </li>
             <li className="mb-4">
@@ -48,7 +48,7 @@ const NewsFeedPage = () => {
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:underline"
               >
-                Success Stories from Recent Projects
+                Success Stories from NGOs in India.
               </a>
             </li>
           </ul>
