@@ -19,7 +19,7 @@ const DeliveryDashboard = () => {
             ×
           </button>
           <h2 className="text-lg font-semibold">Delivery Tasks</h2>
-          <Link to="/delivery">
+          <Link to="/ngoDelivery/viewAssDel">
             <button className="mt-4 bg-gray-300 hover:bg-gray-400 text-gray-900 py-2 px-4 rounded-md">
               View Deliveries
             </button>
