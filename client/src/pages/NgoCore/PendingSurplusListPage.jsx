@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-// import API from "../../lib/axios";
+
 
 const PendingSurplusListPage = () => {
   const [loading, setLoading] = useState(false);
 
-  // ✅ Dummy pending surplus donations
+ 
   const [surplusDonations, setSurplusDonations] = useState([
     {
       _id: "d1",
@@ -26,10 +26,9 @@ const PendingSurplusListPage = () => {
     },
   ]);
 
-  // ⚠️ No need to fetch real data for now
+
   useEffect(() => {
-    // Placeholder for future API call
-    // getAllSurplusDonation();
+   
   }, []);
 
   const handleUpdateStatus = async (id, status) => {

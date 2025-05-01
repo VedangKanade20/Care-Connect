@@ -3,7 +3,6 @@ import API from "../../lib/axios";
 import { toast } from "react-hot-toast";
 
 const AssignedDeliveriesPage = () => {
-  // Dummy accepted surplus donations
   const [surplusDonations, setSurplusDonations] = useState([
     {
       _id: "s1",
@@ -21,7 +20,6 @@ const AssignedDeliveriesPage = () => {
     },
   ]);
 
-  // Dummy delivery users
   const deliveryUsers = [
     { _id: "u1", name: "Ankita Sharma", email: "ankita@careconnect.org" },
     { _id: "u2", name: "Ravi Patel", email: "ravi@careconnect.org" },

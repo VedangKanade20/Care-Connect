@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useRegister } from "../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import LandingFooter from "../../components/landing/LandingFooter";

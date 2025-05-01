@@ -1,4 +1,4 @@
-// CompletedDeliveriesList.jsx
+
 import React, { useState } from "react";
 
 const CompletedDeliveriesList = () => {
