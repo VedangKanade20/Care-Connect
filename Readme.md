@@ -8,36 +8,42 @@ Care Connect is a comprehensive platform designed to streamline healthcare manag
 
 Care Connect offers a wide range of features to enhance healthcare management:
 
-- **Appointment Scheduling**: 
-    - Intuitive interface for booking and managing appointments.
-    - Calendar integration for better scheduling.
-    - Rescheduling and cancellation options.
+- **Appointment Scheduling**:
 
-- **Patient Records Management**: 
-    - Secure storage and retrieval of patient medical records.
-    - Easy access to medical history, prescriptions, and test results.
-    - Role-based access control to ensure data privacy.
+  - Intuitive interface for booking and managing appointments.
+  - Calendar integration for better scheduling.
+  - Rescheduling and cancellation options.
 
-- **Real-Time Communication**: 
-    - Built-in chat functionality for instant messaging.
-    - Video call support for remote consultations.
-    - Secure and encrypted communication channels.
+- **Patient Records Management**:
 
-- **Notifications and Reminders**: 
-    - Automated alerts for upcoming appointments and follow-ups.
-    - Customizable notification preferences for users.
+  - Secure storage and retrieval of patient medical records.
+  - Easy access to medical history, prescriptions, and test results.
+  - Role-based access control to ensure data privacy.
 
-- **Multi-User Roles**: 
-    - Role-specific features for patients, doctors, and administrators.
-    - Seamless role switching for users with multiple roles.
+- **Real-Time Communication**:
 
-- **Analytics Dashboard**: 
-    - Visual insights into patient data and operational metrics.
-    - Customizable reports for better decision-making.
+  - Built-in chat functionality for instant messaging.
+  - Video call support for remote consultations.
+  - Secure and encrypted communication channels.
 
-- **Secure and Compliant**: 
-    - Built with industry-standard security protocols.
-    - Fully compliant with healthcare regulations like HIPAA.
+- **Notifications and Reminders**:
+
+  - Automated alerts for upcoming appointments and follow-ups.
+  - Customizable notification preferences for users.
+
+- **Multi-User Roles**:
+
+  - Role-specific features for patients, doctors, and administrators.
+  - Seamless role switching for users with multiple roles.
+
+- **Analytics Dashboard**:
+
+  - Visual insights into patient data and operational metrics.
+  - Customizable reports for better decision-making.
+
+- **Secure and Compliant**:
+  - Built with industry-standard security protocols.
+  - Fully compliant with healthcare regulations like HIPAA.
 
 ---
 
@@ -46,68 +52,70 @@ Care Connect offers a wide range of features to enhance healthcare management:
 Follow these steps to set up the project locally:
 
 1. **Clone the Repository**:
-        ```bash
-        git clone https://github.com/your-username/care-connect.git
-        cd care-connect
-        ```
+   `bash
+ git clone https://github.com/vedangkanade20/care-connect.git
+ cd care-connect
+ `
 
 2. **Install Dependencies**:
-        ```bash
-        npm install
-        ```
+   `bash
+ npm install
+ `
 
 3. **Set Up Environment Variables**:
-        Create a `.env` file in the root directory and configure the required variables:
-        ```plaintext
-        DATABASE_URL=your-database-url
-        API_KEY=your-api-key
-        JWT_SECRET=your-jwt-secret
-        SMTP_SERVER=your-smtp-server
-        ```
+   Create a `.env` file in the root directory and configure the required variables:
+   `plaintext
+ DATABASE_URL=your-database-url
+ API_KEY=your-api-key
+ JWT_SECRET=your-jwt-secret
+ SMTP_SERVER=your-smtp-server
+ `
 
 4. **Run Database Migrations**:
-        ```bash
-        npm run migrate
-        ```
+   `bash
+ npm run migrate
+ `
 
 5. **Seed the Database** (Optional):
-        Populate the database with sample data for testing:
-        ```bash
-        npm run seed
-        ```
+   Populate the database with sample data for testing:
+   `bash
+ npm run seed
+ `
 
 6. **Start the Application**:
-        ```bash
-        npm start
-        ```
+   `bash
+ npm start
+ `
 
 7. **Access the Application**:
-        Open your browser and navigate to `http://localhost:3000`.
+   Open your browser and navigate to `http://localhost:3000`.
 
 ---
 
 ## Usage
 
-1. **Sign Up**: 
-     - Create an account as a patient, doctor, or admin.
-     - Verify your email address to activate your account.
+1. **Sign Up**:
 
-2. **Log In**: 
-     - Access your personalized dashboard based on your role.
+   - Create an account as a patient, doctor, or admin.
+   - Verify your email address to activate your account.
+
+2. **Log In**:
+
+   - Access your personalized dashboard based on your role.
 
 3. **Explore Features**:
-     - **Patients**:
-         - Book, reschedule, or cancel appointments.
-         - View and download medical records.
-         - Communicate with healthcare providers.
-     - **Doctors**:
-         - Manage schedules and availability.
-         - Access patient records for consultations.
-         - Communicate with patients via chat or video calls.
-     - **Admins**:
-         - Oversee platform operations.
-         - Manage user accounts and permissions.
-         - Generate reports and analytics.
+   - **Patients**:
+     - Book, reschedule, or cancel appointments.
+     - View and download medical records.
+     - Communicate with healthcare providers.
+   - **Doctors**:
+     - Manage schedules and availability.
+     - Access patient records for consultations.
+     - Communicate with patients via chat or video calls.
+   - **Admins**:
+     - Oversee platform operations.
+     - Manage user accounts and permissions.
+     - Generate reports and analytics.
 
 ---
 
@@ -116,30 +124,32 @@ Follow these steps to set up the project locally:
 We welcome contributions to improve Care Connect! Here's how you can contribute:
 
 1. **Fork the Repository**:
-     - Click the "Fork" button on the repository page.
+
+   - Click the "Fork" button on the repository page.
 
 2. **Create a New Branch**:
-        ```bash
-        git checkout -b feature/your-feature-name
-        ```
+   `bash
+ git checkout -b feature/your-feature-name
+ `
 
 3. **Make Your Changes**:
-     - Ensure your code follows the project's coding standards.
-     - Write tests for new features or bug fixes.
+
+   - Ensure your code follows the project's coding standards.
+   - Write tests for new features or bug fixes.
 
 4. **Commit Your Changes**:
-        ```bash
-        git commit -m "Add your message here"
-        ```
+   `bash
+ git commit -m "Add your message here"
+ `
 
 5. **Push to Your Branch**:
-        ```bash
-        git push origin feature/your-feature-name
-        ```
+   `bash
+ git push origin feature/your-feature-name
+ `
 
 6. **Open a Pull Request**:
-     - Provide a clear description of your changes.
-     - Link any related issues or feature requests.
+   - Provide a clear description of your changes.
+   - Link any related issues or feature requests.
 
 ---
 
@@ -153,8 +163,8 @@ This project is licensed under the [MIT License](LICENSE). You are free to use, 
 
 For questions, feedback, or support, please reach out to us:
 
-- **Email**: [support@careconnect.com](mailto:support@careconnect.com)
-- **GitHub Issues**: [Report an Issue](https://github.com/your-username/care-connect/issues)
+- **Email**: [vedangk20@gmail.com](mailto:vedangk20@gmail.com)
+- **GitHub Issues**: [Report an Issue](https://github.com/vedangkanade20/care-connect/issues)
 
 We value your input and are here to help!
 
