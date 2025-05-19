@@ -27,11 +27,11 @@ const MonetaryDonationPage = () => {
   return (
     <div
       className="p-6"
-      style={{
-        backgroundImage: `url('https://d1umd1ua9snads.cloudfront.net/images/articles/_bannerWebp/72396/bigstock-Man-Holding-Money-Jar-With-Don-431800991.webp')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      // style={{
+      //   backgroundImage: `url('https://d1umd1ua9snads.cloudfront.net/images/articles/_bannerWebp/72396/bigstock-Man-Holding-Money-Jar-With-Don-431800991.webp')`,
+      //   backgroundSize: "cover",
+      //   backgroundPosition: "center",
+      // }}
     >
       <h1 className="text-2xl font-bold mb-6">Donate Money</h1>
       <form className="space-y-4" onSubmit={handleSubmit}>
