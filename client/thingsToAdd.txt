@@ -1,0 +1,18 @@
+Updates
+1. Complete Delivery
+2. complete seprate acc each
+3. complete ngo acceptance
+4. add Chat
+5. testimonials and ratings based on donors, etc
+
+problems
+1. ngo ran away with money
+solution: 
+    photo of uploading
+    testimonials
+    verified batch(govt doc something like that)
+
+extras
+1.small ai features
+2. integrate llm
+    
