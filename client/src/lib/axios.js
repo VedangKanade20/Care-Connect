@@ -3,7 +3,7 @@ import axios from "axios";
 //an axios instance
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:9000",
+  baseURL: import.meta.env.VITE_API_URL || "https://care-connect-backend-eibi.onrender.com",
   withCredentials: true,
 });
 
