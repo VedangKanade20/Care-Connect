@@ -9,7 +9,10 @@ const LandingNavbar = () => {
   return (
     <header className="bg-black shadow-md py-4 px-6">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-white">CareConnect</h1>
+        <div className="flex items-center space-x-3">
+          <img src="/logo.svg" alt="CareConnect Logo" className="w-10 h-10" />
+          <h1 className="text-3xl font-bold text-white">CareConnect</h1>
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8">

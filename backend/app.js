@@ -6,10 +6,12 @@ import monetaryDonationRouter from "./routes/monetaryDonation.routes.js";
 import cors from "cors";
 
 const app = express();
-app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true, // if you are using cookies/session (optional for JWT)
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "*"],
+    credentials: true, // if you are using cookies/session (optional for JWT)
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
